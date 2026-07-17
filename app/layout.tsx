@@ -12,26 +12,27 @@ export async function generateMetadata(): Promise<Metadata> {
     "A bilateral platform connecting research, education, training and communities for sustainable water futures across Australia and India.";
 
   return {
+    metadataBase: new URL(baseUrl),
     title: {
       default: title,
       template: "%s · AIWC",
     },
     description,
     icons: {
-      icon: "https://aiwc.org.au/wp-content/uploads/2022/06/AIWC-Favicon-150x150.png",
-      shortcut: "https://aiwc.org.au/wp-content/uploads/2022/06/AIWC-Favicon-150x150.png",
+      icon: "/media/994-AIWC-Favicon.png",
+      shortcut: "/media/994-AIWC-Favicon.png",
     },
     openGraph: {
       type: "website",
       title,
       description,
-      images: [{ url: `${baseUrl}/og.png`, width: 1731, height: 909, alt: "AIWC — Two countries. One water future." }],
+      images: [{ url: `${baseUrl}/og-aiwc-2026.png`, width: 1729, height: 910, alt: "AIWC — Two countries. One water future." }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [`${baseUrl}/og.png`],
+      images: [`${baseUrl}/og-aiwc-2026.png`],
     },
   };
 }

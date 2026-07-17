@@ -1,21 +1,11 @@
 import type { Metadata } from "next";
+import { SiteNavigation } from "@/app/components/SiteChrome";
 
 export const metadata: Metadata = {
   title: "AIWC — A partnership for sustainable water futures",
   description:
     "The Australia India Water Centre connects research, education, training and communities across two nations to shape sustainable water futures.",
 };
-
-const navigation = [
-  ["01", "Home", "#home"],
-  ["02", "About", "#about"],
-  ["03", "Our work", "#work"],
-  ["04", "Education", "#education"],
-  ["05", "People", "#people"],
-  ["06", "Partners", "#partners"],
-  ["07", "Knowledge", "#knowledge"],
-  ["08", "Contact", "#contact"],
-];
 
 const focusAreas = [
   {
@@ -56,8 +46,8 @@ const programs = [
     copy: "Bhujal Jaankaars—local groundwater-informed volunteers—measure water levels, rainfall and quality, then translate the evidence into decisions communities can use. The MyWell app makes this shared resource visible.",
     detail:
       "Developed in Rajasthan and Gujarat, the approach has helped communities understand aquifers, maintain recharge structures, plan seasonal crops and move from individual extraction toward collective management.",
-    image: "https://aiwc.org.au/wp-content/uploads/2025/05/MARVI-1.jpg",
-    href: "https://aiwc.org.au/managing-groundwater-use-and-sustaining-aquifer-recharge-through-village-level-interventions-marvi/",
+    image: "/media/2335-MARVI-3.jpg",
+    href: "/managing-groundwater-use-and-sustaining-aquifer-recharge-through-village-level-interventions-marvi",
   },
   {
     index: "P.02",
@@ -66,8 +56,8 @@ const programs = [
     copy: "A transdisciplinary program for early-career water leaders, combining technical knowledge with critical thinking, communication, policy, social insight and mentorship.",
     detail:
       "Forty professionals have completed the program. Its Situation Understanding and Improvement Project turns learning into client-focused recommendations for real water challenges.",
-    image: "https://aiwc.org.au/wp-content/uploads/2025/05/YWP-1.jpg",
-    href: "https://aiwc.org.au/the-young-water-professionals-program-ywp/",
+    image: "/media/2340-YWP-1.jpg",
+    href: "/the-young-water-professionals-program-ywp",
   },
   {
     index: "P.03",
@@ -76,8 +66,8 @@ const programs = [
     copy: "Australian and Indian dam specialists exchange practice in risk assessment, structural health, emergency preparedness, regulation, stakeholder engagement and inclusive management.",
     detail:
       "Workshops and field visits—from Warragamba and Snowy Hydro to Bhatsa Dam—have supported a long-term WSU–IIT Roorkee partnership and a stronger professional network.",
-    image: "https://aiwc.org.au/wp-content/uploads/2025/05/DRIP-2.jpg",
-    href: "https://aiwc.org.au/dam-rehabilitation-improvement-project-drip-ii/",
+    image: "/media/2344-DRIP-1.jpg",
+    href: "/dam-rehabilitation-improvement-project-drip-ii",
   },
   {
     index: "P.04",
@@ -86,8 +76,8 @@ const programs = [
     copy: "Farmer-led cooperatives use local groundwater and rainfall evidence to plan cropping, organise recharge, resolve water-sharing questions and connect villages with researchers and government.",
     detail:
       "The inclusive, democratic and data-led model emerged from MARVI and is being explored as a scalable way to govern groundwater as a common resource.",
-    image: "https://aiwc.org.au/wp-content/uploads/2025/05/VGC-2.jpg",
-    href: "https://aiwc.org.au/village-groundwater-cooperatives-vgcs/",
+    image: "/media/2354-VGC-1.jpg",
+    href: "/village-groundwater-cooperatives-vgcs",
   },
 ];
 
@@ -269,7 +259,7 @@ const publications = [
     year: "2021",
     title: "Enhancing non-revenue water reduction by incorporating service benchmarks and best practices",
     meta: "Journal of IWWA 3(4)",
-    href: "https://aiwc.org.au/journal-articles/",
+    href: "/journal-articles",
   },
 ];
 
@@ -309,53 +299,7 @@ function PartnerList({ names }: { names: string[] }) {
 export default function Home() {
   return (
     <>
-      <a className="skip-link" href="#main-content">
-        Skip to content
-      </a>
-
-      <aside className="sidebar" aria-label="Primary navigation">
-        <a className="brand" href="#home" aria-label="AIWC home">
-          <span className="brand-mark" aria-hidden="true">
-            <i />
-          </span>
-          <span>
-            <strong className="brand-word">AIWC</strong>
-            <small className="brand-note">Australia ↔ India</small>
-          </span>
-        </a>
-
-        <p className="nav-label">Explore the centre</p>
-        <nav className="side-nav">
-          {navigation.map(([number, label, href]) => (
-            <a className="nav-item" href={href} key={href}>
-              <span className="nav-number">{number}</span>
-              <span>{label}</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          ))}
-        </nav>
-
-        <div className="sidebar-foot">
-          <p>A joint platform for sustainable water futures.</p>
-          <a href="mailto:aiwc@westernsydney.edu.au">aiwc@westernsydney.edu.au</a>
-        </div>
-      </aside>
-
-      <header className="mobile-bar">
-        <a className="mobile-brand" href="#home">
-          AIWC <span>Australia ↔ India</span>
-        </a>
-        <details>
-          <summary>Menu</summary>
-          <nav>
-            {navigation.map(([, label, href]) => (
-              <a href={href} key={href}>
-                {label}
-              </a>
-            ))}
-          </nav>
-        </details>
-      </header>
+      <SiteNavigation />
 
       <main id="main-content">
         <section className="hero" id="home">
@@ -380,7 +324,7 @@ export default function Home() {
           </div>
           <div className="hero-stage">
             <img
-              src="https://aiwc.org.au/wp-content/uploads/2022/06/Homepage-Hero-Images.webp"
+              src="/media/91-Homepage-Hero-Images.webp"
               alt="Water landscapes and collaboration across Australia and India"
             />
             <span className="hero-label">Australia India Water Centre</span>
@@ -456,7 +400,7 @@ export default function Home() {
           <div className="conference-band">
             <div className="conference-image">
               <img
-                src="https://aiwc.org.au/wp-content/uploads/2025/12/AIWC@5Conference_1.jpg"
+                src="/media/2495-AIWC-5Conference_1.jpg"
                 alt="Delegates at the AIWC five-year conference"
               />
             </div>
@@ -472,7 +416,7 @@ export default function Home() {
                 <li>Joint degrees, micro-credentials and expanded YWP training</li>
                 <li>Deeper government, industry and regional partnerships</li>
               </ul>
-              <a className="text-link light" href="https://aiwc.org.au/aiwc5-conference/">
+              <a className="text-link light" href="/aiwc5-conference">
                 Read the conference story <span aria-hidden="true">↗</span>
               </a>
             </div>
@@ -562,7 +506,7 @@ export default function Home() {
               <p>
                 Theory, practical skills, reflection and research-based projects equip graduates to develop innovative responses to complex water challenges.
               </p>
-              <a className="button" href="https://aiwc.org.au/masters-program-in-sustainable-water-futures/">
+              <a className="button" href="/masters-program-in-sustainable-water-futures">
                 Program overview <span aria-hidden="true">↗</span>
               </a>
             </div>
@@ -699,17 +643,17 @@ export default function Home() {
               </p>
             </div>
             <div className="story-stack">
-              <a href="https://aiwc.org.au/rejuvenation-of-the-springs-in-the-himalayan-region-evaluation-of-options-and-strategies-mr-neeraj-pant-phd-candidate/">
+              <a href="/rejuvenation-of-the-springs-in-the-himalayan-region-evaluation-of-options-and-strategies-mr-neeraj-pant-phd-candidate">
                 <span>Field research</span>
                 <strong>Rejuvenating springs in the Himalayan region</strong>
                 <i>↗</i>
               </a>
-              <a href="https://aiwc.org.au/dams-safety-and-rehabilitation/">
+              <a href="/dams-safety-and-rehabilitation">
                 <span>Infrastructure</span>
                 <strong>Dam safety and rehabilitation</strong>
                 <i>↗</i>
               </a>
-              <a href="https://aiwc.org.au/webinar-series-water-talks-2025/">
+              <a href="/webinar-series-water-talks-2025">
                 <span>Webinar series</span>
                 <strong>Water Talks: policy, rivers, reuse and agriculture</strong>
                 <i>↗</i>
@@ -723,7 +667,7 @@ export default function Home() {
                 <p className="eyebrow">Selected publications</p>
                 <h3>Research across the water system.</h3>
               </div>
-              <a className="text-link" href="https://aiwc.org.au/journal-articles/">
+              <a className="text-link" href="/journal-articles">
                 Full journal archive <span aria-hidden="true">↗</span>
               </a>
             </div>
@@ -744,25 +688,25 @@ export default function Home() {
               <span>01</span>
               <h3>Journal articles</h3>
               <p>Groundwater, urban runoff, membranes, catchments, climate sensitivity, water quality and leadership.</p>
-              <a href="https://aiwc.org.au/journal-articles/">Browse articles ↗</a>
+              <a href="/journal-articles">Browse articles ↗</a>
             </article>
             <article>
               <span>02</span>
               <h3>Conference papers</h3>
               <p>Flood risk, drought, non-revenue water, hydrologic modelling and sustainable infrastructure.</p>
-              <a href="https://aiwc.org.au/conference-papers/">Browse papers ↗</a>
+              <a href="/conference-papers">Browse papers ↗</a>
             </article>
             <article>
               <span>03</span>
               <h3>Books & chapters</h3>
               <p>Long-form scholarship, including landscape segmentation and agroecosystem simulation.</p>
-              <a href="https://aiwc.org.au/books-chapters/">Browse books ↗</a>
+              <a href="/books-chapters">Browse books ↗</a>
             </article>
             <article>
               <span>04</span>
               <h3>Practical resources</h3>
               <p>Dam safety seminars, operating practice, flood risk, GEDSI and public communication.</p>
-              <a href="https://aiwc.org.au/resources/">Browse resources ↗</a>
+              <a href="/resources">Browse resources ↗</a>
             </article>
           </div>
 
@@ -831,7 +775,7 @@ export default function Home() {
             <a className="footer-brand" href="#home">AIWC</a>
             <p>A joint initiative of institutions, government agencies and water businesses from Australia and India.</p>
             <div>
-              <a href="https://www.youtube.com/@australiaindiawatercentre">YouTube ↗</a>
+              <a href="https://www.youtube.com/@australiaindiawatercentre-9628">YouTube ↗</a>
               <span>© AIWC 2026</span>
             </div>
           </footer>
