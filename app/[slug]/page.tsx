@@ -14,6 +14,7 @@ import {
   getEntryImage,
   getEntryMedia,
   getMediaBySlug,
+  media,
   peopleInCountry,
   relatedEntries,
 } from "@/app/data/content";
@@ -368,7 +369,11 @@ function MediaAttachmentPage({ item }: { item: MediaRecord }) {
 }
 
 export function generateStaticParams() {
-  return entries.filter((entry) => entry.slug).map((entry) => ({ slug: entry.slug }));
+  const slugs = new Set([
+    ...entries.map((entry) => entry.slug),
+    ...media.map((item) => item.slug),
+  ].filter(Boolean));
+  return [...slugs].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: RouteProps): Promise<Metadata> {

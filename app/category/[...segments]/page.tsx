@@ -6,6 +6,8 @@ import { entriesInCategory, siteContent } from "@/app/data/content";
 
 type Props = { params: Promise<{ segments: string[] }> };
 
+export const dynamicParams = false;
+
 function categoryPath(categoryId: number): string[] {
   const category = siteContent.categories.find((item) => item.id === categoryId);
   if (!category) return [];
@@ -15,7 +17,7 @@ function categoryPath(categoryId: number): string[] {
 export function generateStaticParams() {
   const paths = siteContent.categories.map((category) => ({ segments: categoryPath(category.id) }));
   const aliases = paths
-    .filter((path) => path.segments[0] === "australian-partner-institutes")
+    .filter((path) => path.segments.length > 1 && path.segments[0] === "australian-partner-institutes")
     .map((path) => ({ segments: ["australia-partner-institutes", ...path.segments.slice(1)] }));
   return [...paths, ...aliases];
 }
