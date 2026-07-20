@@ -5,33 +5,38 @@ export function SiteNavigation() {
     <>
       <a className="skip-link" href="#main-content">Skip to content</a>
 
-      <aside className="science-sidebar" aria-label="Primary navigation">
-        <a className="science-brand" href="/" aria-label="Australia India Water Centre home">
-          <img src="/media/994-AIWC-Favicon.png" alt="" />
-          <span><strong>AIWC</strong><small>Australia India<br />Water Centre</small></span>
-        </a>
-
-        <div className="bilateral-mark" aria-label="Australia and India bilateral partnership">
-          <span>AU</span><i aria-hidden="true" /><span>IN</span>
+      <aside className="flow-sidebar" aria-label="Primary navigation">
+        <div className="flow-current" aria-hidden="true">
+          <i /><i /><i /><i />
         </div>
 
-        <p className="science-nav-label">Centre navigation</p>
-        <nav className="science-navigation">
+        <a className="flow-brand" href="/" aria-label="Australia India Water Centre home">
+          <img src="/media/994-AIWC-Favicon.png" alt="" />
+          <span><strong>AIWC</strong><small>Australia India Water Centre</small></span>
+        </a>
+
+        <div className="flow-bilateral" aria-label="Australia and India partnership">
+          <span>AU</span><b aria-hidden="true" /><span>IN</span>
+        </div>
+
+        <nav className="flow-navigation">
           {primaryNavigation.map((item) => (
-            <a href={item.href} key={item.href}>
-              <span>{item.number}</span><strong>{item.label}</strong><i aria-hidden="true">→</i>
+            <a href={item.href} key={item.href} aria-label={item.label}>
+              <span>{item.number}</span>
+              <strong>{item.label}</strong>
+              <i aria-hidden="true">↗</i>
             </a>
           ))}
         </nav>
 
-        <div className="science-sidebar-footer">
-          <p>Bilateral research, education and professional exchange.</p>
+        <div className="flow-sidebar-foot">
+          <p>Water science without borders.</p>
           <a href="mailto:aiwc@westernsydney.edu.au">aiwc@westernsydney.edu.au</a>
         </div>
       </aside>
 
-      <header className="science-mobile-bar">
-        <a className="science-mobile-brand" href="/">
+      <header className="flow-mobile-bar">
+        <a className="flow-mobile-brand" href="/">
           <img src="/media/994-AIWC-Favicon.png" alt="" />
           <span><strong>AIWC</strong><small>Australia India Water Centre</small></span>
         </a>
@@ -48,7 +53,7 @@ export function SiteNavigation() {
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer science-footer">
+    <footer className="site-footer flow-footer">
       <div className="site-shell footer-grid">
         <div className="footer-intro">
           <a className="footer-science-brand" href="/">
