@@ -7,7 +7,7 @@ export function SiteNavigation() {
 
       <aside className="flow-sidebar" aria-label="Primary navigation">
         <div className="flow-current" aria-hidden="true">
-          <i /><i /><i /><i />
+          <i /><i /><i />
         </div>
 
         <a className="flow-brand" href="/" aria-label="Australia India Water Centre home">
@@ -22,9 +22,8 @@ export function SiteNavigation() {
         <nav className="flow-navigation">
           {primaryNavigation.map((item) => (
             <a href={item.href} key={item.href} aria-label={item.label}>
-              <span>{item.number}</span>
               <strong>{item.label}</strong>
-              <i aria-hidden="true">↗</i>
+              <i aria-hidden="true">→</i>
             </a>
           ))}
         </nav>
