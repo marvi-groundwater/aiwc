@@ -117,6 +117,25 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="confluence-section" aria-labelledby="confluence-title">
+          <div className="site-shell confluence-grid">
+            <figure className="confluence-visual">
+              <img loading="lazy" src="/og.png" alt="A river joining the landscapes of Australia and India" />
+              <figcaption>One water future · Two bodies of knowledge</figcaption>
+            </figure>
+            <div className="confluence-copy">
+              <p className="eyebrow">Australia · India · Shared water knowledge</p>
+              <h2 id="confluence-title">Two landscapes.<br />A shared current.</h2>
+              <p>From dryland catchments to monsoon-fed river systems, the Centre connects different environmental experience through one long-term scientific partnership.</p>
+              <div className="country-threads">
+                <div><span>AU / Australia</span><strong>Drought · catchments · groundwater · resilience</strong></div>
+                <i aria-hidden="true">↔</i>
+                <div><span>IN / India</span><strong>Monsoon · rivers · agriculture · communities</strong></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="home-section home-mission">
           <div className="site-shell mission-grid">
             <div>

@@ -20,13 +20,13 @@ export const metadata: Metadata = {
     type: "website",
     title,
     description,
-    images: [{ url: "/og-aiwc-2026.png", width: 1729, height: 910, alt: "AIWC — Two countries. One water future." }],
+    images: [{ url: "/og.png", width: 1729, height: 910, alt: "AIWC — Two countries. One water future." }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: ["/og-aiwc-2026.png"],
+    images: ["/og.png"],
   },
 };
 

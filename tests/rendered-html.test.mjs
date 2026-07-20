@@ -46,7 +46,7 @@ test("server-renders the redesigned AIWC homepage", async () => {
   assert.match(html, /Village Groundwater Cooperatives/);
   assert.match(html, /Young Water Professionals/);
   assert.match(html, /AIWC @ 5/);
-  assert.match(html, /https:\/\/aiwc\.org\.au\/og-aiwc-2026\.png/);
+  assert.match(html, /https:\/\/aiwc\.org\.au\/og\.png/);
   assert.doesNotMatch(html, /wp-content\/uploads|codex-preview|Your site is taking shape|SkeletonPreview/);
 });
 
