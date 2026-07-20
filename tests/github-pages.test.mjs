@@ -85,7 +85,7 @@ test("exported pages are pure static HTML with portable local paths", () => {
       try { decoded = decodeURI(local); } catch {}
       const target = path.resolve(path.dirname(file), decoded);
       assert.ok(target.startsWith(docsDir), `${file} links outside docs/: ${reference}`);
-      const exists = fs.existsSync(target) && (fs.statSync(target).isFile() || fs.existsSync(path.join(target, "index.html")));
+      const exists = fs.existsSync(target) && fs.statSync(target).isFile();
       assert.ok(exists, `${file} has a missing local reference: ${reference}`);
     }
   }
@@ -96,4 +96,5 @@ test("root index is a working fallback to the /docs GitHub Pages package", () =>
   assert.match(html, /<base href="\.\/docs\/">/);
   assert.match(html, /Two countries\./);
   assert.match(html, /One water future\./);
+  assert.match(html, /href="\.\/about\/index\.html"/);
 });

@@ -58,11 +58,13 @@ function relativeRootPrefix(file) {
 
 function localiseRootPath(value, rootPrefix) {
   const { pathname, suffix } = splitPathSuffix(value);
-  if (pathname === "/") return `${rootPrefix}${suffix}`;
+  if (pathname === "/") return `${rootPrefix}index.html${suffix}`;
 
   let localPath = pathname.replace(/^\/+/, "");
   const routeKey = `/${localPath.replace(/\/+$/, "")}`;
-  if (exportedRoutes.has(routeKey) && !localPath.endsWith("/")) localPath += "/";
+  if (exportedRoutes.has(routeKey)) {
+    localPath = `${localPath.replace(/\/+$/, "")}/index.html`;
+  }
   return `${rootPrefix}${localPath}${suffix}`;
 }
 
@@ -164,7 +166,7 @@ const notFound = `<!doctype html>
     p{max-width:570px;font-size:1.08rem;line-height:1.7}a{display:inline-block;margin-top:20px;padding:15px 20px;color:white;background:var(--ink);text-decoration:none;font-weight:700}
   </style>
 </head>
-<body><main><p>Australia India Water Centre · 404</p><h1>This current has changed course.</h1><p>The page may have moved into AIWC’s redesigned archive. Return home to continue exploring the Centre’s work, people and water knowledge.</p><a id="home-link" href="https://aiwc.org.au/">Return to AIWC home →</a></main></body>
+<body><main><p>Australia India Water Centre · 404</p><h1>This current has changed course.</h1><p>The page may have moved into AIWC’s redesigned archive. Return home to continue exploring the Centre’s work, people and water knowledge.</p><a id="home-link" href="./index.html">Return to AIWC home →</a></main></body>
 </html>
 `;
 fs.writeFileSync(path.join(outputDir, "404.html"), notFound);
