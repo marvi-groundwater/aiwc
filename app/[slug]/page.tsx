@@ -277,6 +277,93 @@ function PeoplePage({ entry, country }: { entry: EntryRecord; country?: "Austral
   );
 }
 
+function ContactPage({ entry }: { entry: EntryRecord }) {
+  return (
+    <PageFrame>
+      <section className="contact-editorial-hero">
+        <div className="site-shell contact-hero-grid">
+          <div className="contact-hero-copy">
+            <p className="eyebrow">Australia ↔ India · Centre contacts</p>
+            <h1>Start with a<br />conversation.</h1>
+            <p>
+              AIWC is built through people-to-people exchange. Get in touch to discuss research, learning, professional practice or a new partnership.
+            </p>
+            <a className="button primary" href="mailto:aiwc@westernsydney.edu.au">Email the Centre <span aria-hidden="true">→</span></a>
+          </div>
+          <figure className="contact-hero-map">
+            <img src="/media/120-Maps_Group.webp" alt="Australia and India, connected through the Australia India Water Centre" />
+            <figcaption>Two countries · One continuing exchange</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section className="contact-body content-wrap">
+        <div className="contact-body-intro">
+          <p className="eyebrow">Connect with AIWC</p>
+          <h2>A practical network<br />made personal.</h2>
+          <p>Whether you are a researcher, student, water professional, government agency, business or community organisation, the Centre welcomes a conversation across borders and disciplines.</p>
+        </div>
+
+        <div className="contact-country-grid">
+          <section className="contact-country contact-australia" aria-labelledby="australia-contact-title">
+            <header>
+              <p className="contact-country-mark">Australia</p>
+              <h2 id="australia-contact-title">Australian<br />contacts</h2>
+            </header>
+            <div className="contact-person">
+              <p className="contact-role">Centre director</p>
+              <h3>Distinguished Professor<br />Basant Maheshwari</h3>
+              <p>Western Sydney University<br />Locked Bag 1797, Penrith NSW 2751</p>
+              <a href="mailto:b.maheshwari@westernsydney.edu.au">b.maheshwari@westernsydney.edu.au</a>
+            </div>
+            <div className="contact-person">
+              <p className="contact-role">Country co-ordinator · Australia</p>
+              <h3>Associate Professor<br />Dharma Hagare</h3>
+              <a href="mailto:D.Hagare@westernsydney.edu.au">D.Hagare@westernsydney.edu.au</a>
+            </div>
+          </section>
+
+          <section className="contact-country contact-india" aria-labelledby="india-contact-title">
+            <header>
+              <p className="contact-country-mark">India</p>
+              <h2 id="india-contact-title">Indian<br />contacts</h2>
+            </header>
+            <div className="contact-person">
+              <p className="contact-role">Co-director · AIWC</p>
+              <h3>Professor<br />Parmeswar Iyer</h3>
+              <p>Director, Indian Institute of Technology Guwahati<br />Guwahati 781039</p>
+              <a href="mailto:director@iitg.ac.in">director@iitg.ac.in</a>
+            </div>
+            <div className="contact-person">
+              <p className="contact-role">Country co-ordinator · India</p>
+              <h3>Professor<br />Subashisa Datta</h3>
+              <a href="mailto:subashisa@iitg.ac.in">subashisa@iitg.ac.in</a>
+            </div>
+            <div className="contact-person">
+              <p className="contact-role">Centre for Sustainable Water Research</p>
+              <h3>Professor<br />Suresh Kartha</h3>
+              <a href="mailto:hocswr@iitg.ac.in">hocswr@iitg.ac.in</a>
+            </div>
+          </section>
+        </div>
+
+        <aside className="contact-invitation">
+          <span>AIWC</span>
+          <p>Bring a question, an idea or a water challenge. The Centre’s work begins with a shared conversation.</p>
+          <a href="/our-work">Explore our work <span aria-hidden="true">→</span></a>
+        </aside>
+
+        {entry.bodyHtml && (
+          <details className="source-content-disclosure contact-source-content">
+            <summary>View preserved original contact page content</summary>
+            <div className="legacy-content" dangerouslySetInnerHTML={{ __html: entry.bodyHtml }} />
+          </details>
+        )}
+      </section>
+    </PageFrame>
+  );
+}
+
 function EntryPage({ entry }: { entry: EntryRecord }) {
   const image = getEntryImage(entry);
   const related = relatedEntries(entry);
@@ -408,6 +495,7 @@ export default async function DynamicEntryPage({ params }: RouteProps) {
   if (slug === "our-people") return <PeoplePage entry={entry} />;
   if (slug === "our-people-in-australia") return <PeoplePage entry={entry} country="Australia" />;
   if (slug === "our-people-in-india") return <PeoplePage entry={entry} country="India" />;
+  if (slug === "contact") return <ContactPage entry={entry} />;
   if (collectionIntroductions[slug]) return <CollectionPage entry={entry} slug={slug} />;
 
   return <EntryPage entry={entry} />;

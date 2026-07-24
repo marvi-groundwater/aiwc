@@ -6,10 +6,6 @@ export function SiteNavigation() {
       <a className="skip-link" href="#main-content">Skip to content</a>
 
       <aside className="flow-sidebar" aria-label="Primary navigation">
-        <div className="flow-current" aria-hidden="true">
-          <i /><i /><i />
-        </div>
-
         <a className="flow-brand" href="/" aria-label="Australia India Water Centre home">
           <img src="/media/994-AIWC-Favicon.png" alt="" />
           <span><strong>AIWC</strong><small>Australia India Water Centre</small></span>

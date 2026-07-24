@@ -9,25 +9,21 @@ export const metadata: Metadata = {
 
 const focusAreas = [
   {
-    number: "01",
     title: "Research",
     copy: "Joint inquiry across groundwater, rivers, catchments, water quality, climate resilience and digital water tools.",
     href: "/research",
   },
   {
-    number: "02",
     title: "Education",
     copy: "Connected learning that brings policy, governance, agriculture, catchments and systems thinking into one curriculum.",
     href: "/education",
   },
   {
-    number: "03",
     title: "Training",
     copy: "Practical capacity building for young water professionals, government agencies and community water stewards.",
     href: "/training-capacity-building",
   },
   {
-    number: "04",
     title: "Outreach",
     copy: "WaterWise, Water Talks and community dialogue that turn specialist knowledge into shared action.",
     href: "/outreach",
@@ -166,7 +162,6 @@ export default function Home() {
             <div className="home-focus-grid">
               {focusAreas.map((area) => (
                 <a className="home-focus-card" href={area.href} key={area.title}>
-                  <span>{area.number}</span>
                   <h3>{area.title}</h3>
                   <p>{area.copy}</p>
                   <i aria-hidden="true">→</i>
