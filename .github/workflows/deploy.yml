@@ -8,6 +8,10 @@ name: Build and deploy
 on:
   push:
     branches: [main]
+  # Build and check pull requests too — otherwise a broken link or a block
+  # with no CMS editor is only caught after it is already on main.
+  pull_request:
+    branches: [main]
   workflow_dispatch: {}
 
 permissions:
@@ -15,9 +19,10 @@ permissions:
   pages: write
   id-token: write
 
-# Never let two deploys race; the newest content wins.
+# Never let two deploys race; the newest content wins. Pull requests get
+# their own group so a PR build cannot cancel a live deploy.
 concurrency:
-  group: pages
+  group: pages-${{ github.event_name == 'pull_request' && github.head_ref || 'main' }}
   cancel-in-progress: true
 
 jobs:
@@ -43,11 +48,14 @@ jobs:
         run: node scripts/test-directory.mjs
 
       - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
         with:
           path: _site
 
+  # Only main publishes. Pull requests stop after the checks above.
   deploy:
     needs: build
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     environment:
       name: github-pages
