@@ -132,6 +132,11 @@ for (const p of partners) {
   if (!p.country) fail(`partners/${p.slug}`, 'missing country');
 }
 
+/* internal write-ups must never reach the published site */
+for (const dir of ['reports', 'scripts', 'src']) {
+  if (existsSync(join(OUT, dir))) fail('build', `${dir}/ was copied into _site — it must not ship`);
+}
+
 /* the CMS can edit every block the renderer can draw, and vice versa */
 const cmsPath = join(ROOT, 'admin/config.yml');
 if (existsSync(cmsPath)) {
