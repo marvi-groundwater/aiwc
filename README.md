@@ -53,6 +53,44 @@ reorder; each block type shows only its own fields.
 CMS editor, or vice versa — an un-editable block would be silently dropped the
 first time someone saved that page.
 
+### Signing in
+
+`admin/config.yml` is a **template**. The build fills in `repo`, `branch`,
+`base_url` and `public_folder` from `content/site.json`, so those live in one
+place and cannot drift from the site's base path. Edit `content/site.json`,
+never the deployed `/admin/config.yml`.
+
+```jsonc
+"cms": {
+  "repo": "marvi-groundwater/aiwc",
+  "branch": "main",
+  "authUrl": "https://sveltia-cms-auth.marvi-groundwater.workers.dev"
+}
+```
+
+GitHub has no client-side OAuth for browser apps yet, so signing in needs
+either a broker or a personal access token. Three workable setups:
+
+| Setup | `authUrl` | What an editor does | Cost |
+| --- | --- | --- | --- |
+| **Share MARVI's broker** *(current)* | the shared worker | Clicks "Login with GitHub" | The site's domain must be in that worker's `ALLOWED_DOMAINS` |
+| **AIWC's own broker** | AIWC's worker URL | Clicks "Login with GitHub" | A second Cloudflare Worker + its own GitHub OAuth App |
+| **No broker** | `null` | Pastes a GitHub personal access token once | Every editor needs a PAT — fine for developers, poor for admin staff |
+
+The broker allowlists by **domain, not repository**. If login fails with *"Your
+domain is not allowed to use the authenticator"*, the site's hostname is
+missing from `ALLOWED_DOMAINS` on the worker — that is a Cloudflare dashboard
+change, nothing in this repo will fix it.
+
+To stand up a separate broker: deploy
+[sveltia/sveltia-cms-auth](https://github.com/sveltia/sveltia-cms-auth) to
+Cloudflare Workers, register a GitHub OAuth App whose callback URL is
+`<WORKER_URL>/callback`, set `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET` and
+`ALLOWED_DOMAINS` on the worker, then point `cms.authUrl` at it.
+
+Setting `authUrl` to `null` removes the `base_url` line entirely, which is what
+the token-based setup expects.
+
 ## Structure
 
 ```
