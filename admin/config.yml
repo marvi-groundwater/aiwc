@@ -1,14 +1,21 @@
+# {{GENERATED}}
+#
+# repo, branch, base_url and public_folder below are filled in by
+# scripts/build.mjs from the `cms` and `base` fields in content/site.json.
+# Edit them THERE, not here — this file is the template, and the deployed
+# copy at /admin/config.yml is the generated one.
 backend:
   name: github
-  repo: marvi-groundwater/aiwc
-  branch: main
-  # Same OAuth broker the MARVI site uses — it is org-level, not repo-scoped.
-  base_url: https://sveltia-cms-auth.marvi-groundwater.workers.dev
+  repo: "{{REPO}}"
+  branch: "{{BRANCH}}"
+  base_url: "{{AUTH_URL}}"
 
 local_backend: true
 
 media_folder: "assets/photos"
-public_folder: "/aiwc/assets/photos"
+# Must carry the site's base path, or images an editor uploads are written
+# with a path that 404s once the base changes.
+public_folder: "{{BASE}}/assets/photos"
 
 # ---------------------------------------------------------------------------
 # Three collections, mirroring content/:

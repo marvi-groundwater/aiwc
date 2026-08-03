@@ -137,6 +137,25 @@ for (const dir of ['reports', 'scripts', 'src']) {
   if (existsSync(join(OUT, dir))) fail('build', `${dir}/ was copied into _site — it must not ship`);
 }
 
+/* the generated CMS config is complete and points at this repo */
+const builtCms = join(OUT, 'admin/config.yml');
+if (existsSync(builtCms)) {
+  const raw = readFileSync(builtCms, 'utf8');
+  const left = raw.match(/\{\{[A-Z_]+\}\}/g);
+  if (left) fail('_site/admin/config.yml', `unresolved placeholders: ${[...new Set(left)].join(', ')}`);
+  try {
+    const built = YAML.parse(raw);
+    if (!built.backend?.repo) fail('_site/admin/config.yml', 'backend.repo is empty');
+    // The media path the CMS writes must match the path the site serves,
+    // or uploads 404 after a base-path change.
+    if (built.public_folder !== `${BASE}/assets/photos`) {
+      fail('_site/admin/config.yml', `public_folder is "${built.public_folder}", expected "${BASE}/assets/photos"`);
+    }
+  } catch (err) {
+    fail('_site/admin/config.yml', `is not valid YAML: ${err.message}`);
+  }
+}
+
 /* the CMS can edit every block the renderer can draw, and vice versa */
 const cmsPath = join(ROOT, 'admin/config.yml');
 if (existsSync(cmsPath)) {

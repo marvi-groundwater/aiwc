@@ -5,5 +5,12 @@
   "description": "The Australia India Water Centre — a partnership of 33 institutions and 108 researchers across Australia and India, working on research, education, training and outreach for sustainable water futures.",
   "url": "https://marvi-groundwater.github.io",
   "base": "/aiwc",
-  "languages": ["en"]
+  "languages": [
+    "en"
+  ],
+  "cms": {
+    "repo": "marvi-groundwater/aiwc",
+    "branch": "main",
+    "authUrl": "https://sveltia-cms-auth.marvi-groundwater.workers.dev"
+  }
 }
