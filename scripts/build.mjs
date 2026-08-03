@@ -284,6 +284,24 @@ cpSync(join(ROOT, 'src/templates.mjs'), join(OUT, 'assets/templates.mjs'));
 const styles = [...parseHTML(template).document.querySelectorAll('style')].map((n) => n.textContent).join('\n');
 write('assets/site.css', styles);
 
+// Blocks like peopleGrid and logoWall render from the whole collection, which
+// the CMS does not hand to a preview — it only has the entry being edited.
+// Publishing a trimmed index lets the preview draw them for real.
+write(
+  'assets/collections.json',
+  JSON.stringify({
+    base: BASE,
+    people: people.map((p) => ({
+      slug: p.slug, name: p.name, designation: p.designation,
+      institute: p.institute, country: p.country, interests: p.interests, photo: p.photo,
+    })),
+    partners: partners.map((p) => ({
+      slug: p.slug, name: p.name, country: p.country, summary: p.summary, logo: p.logo,
+    })),
+    pages: PAGES.map((p) => ({ slug: p.slug, menuName: p.menuName })),
+  })
+);
+
 if (existsSync(join(ROOT, 'CNAME'))) cpSync(join(ROOT, 'CNAME'), join(OUT, 'CNAME'));
 write('.nojekyll', '');
 
